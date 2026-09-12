@@ -18,6 +18,7 @@ Ponto de partida com documentação, regras de ouro e configuração (`.env`).
 ## O que tem aqui (por enquanto)
 
 - `docs/REGRAS_DE_OURO.md` — as melhores regras, sintetizadas, para todo projeto de dados (Python + SQL + arquitetura moderna).
+- `meu-loop-agente/` — estrutura de Loop Engineering: contrato, métrica, log e verificador para ciclos de melhoria contínua (o agente só mexe em `meu-loop-agente/workspace/`).
 - `.env` / `.env.example` — configuração pronta (caminhos, banco de dados, APIs), sem segredo no repositório.
 - Pastas-base prontas para crescer: `data/raw`, `data/processed`, `data/descartados`, `notebooks`.
 
@@ -28,6 +29,7 @@ projeto_loop/
 ├── .env / .env.example        # configuração (nunca commitar o .env)
 ├── README.md                  # este arquivo
 ├── docs/                      # documentação e regras de ouro
+├── meu-loop-agente/           # agente de Loop Engineering (contrato, log, workspace, verificador)
 ├── data/
 │   ├── raw/                   # dados brutos (nunca alterar)
 │   ├── processed/             # dados tratados/limpos
