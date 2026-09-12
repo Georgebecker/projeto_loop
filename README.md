@@ -51,6 +51,7 @@ Guia de uso: [`meu-loop-agente/README.md`](meu-loop-agente/README.md).
 - `docs/REGRAS_DE_OURO.md` — as melhores regras, sintetizadas, para todo projeto de dados (Python + SQL + arquitetura moderna).
 - `meu-loop-agente/` — **o coração do projeto:** o agente de Loop Engineering (contrato, métrica, log e verificador para ciclos de melhoria contínua; ele só mexe em `meu-loop-agente/workspace/`).
 - `.env` / `.env.example` — configuração pronta (caminhos, banco de dados, APIs), sem segredo no repositório.
+- `.githooks/` — ganchos de proteção do git: bloqueiam o `.env` no commit **e** no envio ao remoto (ativar em um clone novo: `git config core.hooksPath .githooks` ou `.githooks\instalar.ps1`).
 - Pastas-base prontas para crescer: `data/raw`, `data/processed`, `data/descartados`, `notebooks`.
 
 ## Estrutura prevista (vai evoluir com o projeto)
@@ -58,6 +59,7 @@ Guia de uso: [`meu-loop-agente/README.md`](meu-loop-agente/README.md).
 ```
 projeto_loop/
 ├── .env / .env.example        # configuração (nunca commitar o .env)
+├── .githooks/                 # ganchos de proteção (bloqueiam .env no commit e no envio)
 ├── README.md                  # este arquivo
 ├── docs/                      # documentação e regras de ouro
 ├── meu-loop-agente/           # agente de Loop Engineering (contrato, log, workspace, verificador)
