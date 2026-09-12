@@ -27,6 +27,22 @@ aplica a mudança, roda a verificação, **mede a métrica principal** e decide 
 **ACEITO** (mantém e atualiza a linha de base) ou **REJEITADO** (reverte na hora) —
 registrando tudo no log. O ciclo repete até a meta, dentro de limites definidos.
 
+**Um ciclo de verdade, do começo ao fim (exemplo):**
+
+```
+Iteração 1
+- Hipótese: trocar a biblioteca moment.js por date-fns
+- Arquivos: workspace/lib/date.ts, workspace/package.json
+- Métrica antes: 312 kB  →  depois: 298 kB  (melhoria de 4,49%)
+- Comandos de verificação: todos passaram
+- Decisão: ACEITO — a linha de base vira 298 kB; o próximo ciclo parte daqui
+
+Iteração 2
+- Hipótese: remover um import não utilizado de lodash
+- Métrica antes: 298 kB  →  depois: 298 kB  (não melhorou)
+- Decisão: REJEITADO — a mudança é revertida e nada entra na linha de base
+```
+
 **As vantagens na prática:**
 
 - **Melhoria medida, não "achada":** cada iteração tem número antes/depois; o que não melhora é revertido.
@@ -71,6 +87,12 @@ projeto_loop/
 ├── src/                       # código reutilizável (cresce depois)
 └── sql/                       # consultas e schemas SQL (cresce depois)
 ```
+
+## Requisitos
+
+- **Python 3.8+** — o verificador do agente usa somente a biblioteca padrão (sem dependências externas por enquanto; veja `requirements.txt`).
+- **Git** — com os ganchos de proteção ativos (`git config core.hooksPath .githooks`).
+- **Node.js** — opcional; necessário apenas se o projeto alvo for o exemplo Next.js do `program.md`.
 
 ## Comece por aqui
 

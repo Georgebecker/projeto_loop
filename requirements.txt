@@ -1,0 +1,11 @@
+# =========================================================
+#  Projeto Loop — dependências Python
+#  Instalar com: pip install -r requirements.txt
+# =========================================================
+#
+# Por enquanto este projeto NÃO tem dependências externas:
+# o verificador do agente (meu-loop-agente/verificar_iteracao.py)
+# usa somente a biblioteca padrão do Python (3.8+).
+#
+# Quando o modo autônomo (runner usando a API do DeepSeek) for
+# implementado, as bibliotecas necessárias entram aqui.
