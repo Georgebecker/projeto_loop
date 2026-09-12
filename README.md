@@ -1,7 +1,11 @@
 # Projeto Loop
 
-Base genérica e enxuta para estudos e projetos de dados.
-Ponto de partida com documentação, regras de ouro e configuração (`.env`).
+**Aqui vive um agente de Loop Engineering** (DeepSeek Flash): ele melhora sistemas em
+**ciclos contínuos e verificáveis** — lê o objetivo, propõe UMA mudança pequena, testa,
+mede, decide (mantém ou reverte) e registra. Sem intervenção humana a cada passo.
+
+A base também é ponto de partida para projetos de dados: documentação, regras de ouro
+e configuração (`.env`).
 
 ---
 
@@ -16,10 +20,36 @@ Ponto de partida com documentação, regras de ouro e configuração (`.env`).
 
 ---
 
+## Loop Engineering — o coração do projeto
+
+Um agente opera em ciclos: lê o contrato (`program.md`), propõe **UMA** hipótese pequena,
+aplica a mudança, roda a verificação, **mede a métrica principal** e decide —
+**ACEITO** (mantém e atualiza a linha de base) ou **REJEITADO** (reverte na hora) —
+registrando tudo no log. O ciclo repete até a meta, dentro de limites definidos.
+
+**As vantagens na prática:**
+
+- **Melhoria medida, não "achada":** cada iteração tem número antes/depois; o que não melhora é revertido.
+- **Zero regressão silenciosa:** a linha de base só avança quando a métrica melhora de verdade.
+- **Rede de segurança total:** hipótese pequena + ponto de retorno antes de cada ciclo — reverter é um comando só.
+- **Decisão objetiva:** critérios de aceite/rejeição escritos no contrato — não é opinião nem promessa da IA.
+- **Conhecimento que não se perde:** o `log.md` guarda cada tentativa (hipótese, arquivos, métricas, decisão).
+- **Autonomia sem risco:** o agente só mexe no que o contrato permite (dentro de `workspace/`); o resto é proibido e bloqueado.
+- **Ganho acumulado:** melhorias aceitas se somam — o avanço compõe a cada ciclo.
+- **Custo controlado:** limites de parada (meta, iterações, rejeições seguidas) e temperatura baixa (consistência).
+- **Um contrato, dois "cérebros":** funciona hoje com o agente do chat e amanhã com o runner autônomo (API DeepSeek).
+
+**Onde está:** `meu-loop-agente/` — contrato (`program.md`), configuração de máquina
+(`config_loop.json`), linha de base (`baseline.json`), log (`log.md`), comportamento do
+agente (`system_prompt.md`) e o verificador (`verificar_iteracao.py`).
+Guia de uso: [`meu-loop-agente/README.md`](meu-loop-agente/README.md).
+
+---
+
 ## O que tem aqui (por enquanto)
 
 - `docs/REGRAS_DE_OURO.md` — as melhores regras, sintetizadas, para todo projeto de dados (Python + SQL + arquitetura moderna).
-- `meu-loop-agente/` — estrutura de Loop Engineering: contrato, métrica, log e verificador para ciclos de melhoria contínua (o agente só mexe em `meu-loop-agente/workspace/`).
+- `meu-loop-agente/` — **o coração do projeto:** o agente de Loop Engineering (contrato, métrica, log e verificador para ciclos de melhoria contínua; ele só mexe em `meu-loop-agente/workspace/`).
 - `.env` / `.env.example` — configuração pronta (caminhos, banco de dados, APIs), sem segredo no repositório.
 - Pastas-base prontas para crescer: `data/raw`, `data/processed`, `data/descartados`, `notebooks`.
 
@@ -42,9 +72,10 @@ projeto_loop/
 
 ## Comece por aqui
 
-1. Leia [`docs/REGRAS_DE_OURO.md`](docs/REGRAS_DE_OURO.md) — é o contrato do projeto.
-2. O `.env` já está criado neste projeto (e nunca vai ao git); em um clone novo, copie `.env.example` para `.env` e ajuste os valores (caminhos, banco, chaves).
-3. Use `data/raw` para o que vier bruto e `data/processed` só para o que for tratado e validado.
-4. Nunca apague dado: se não servir mais, mova para uma pasta de descarte (ex.: `data/descartados/`).
+1. Leia [`docs/REGRAS_DE_OURO.md`](docs/REGRAS_DE_OURO.md) — é o contrato do projeto (a **Parte IV** é o guia do agente de Loop Engineering).
+2. Para operar o agente: leia [`meu-loop-agente/README.md`](meu-loop-agente/README.md) — contrato, comandos e como rodar um ciclo.
+3. O `.env` já está criado neste projeto (e nunca vai ao git); em um clone novo, copie `.env.example` para `.env` e ajuste os valores (caminhos, banco, chaves).
+4. Use `data/raw` para o que vier bruto e `data/processed` só para o que for tratado e validado.
+5. Nunca apague dado: se não servir mais, mova para uma pasta de descarte (ex.: `data/descartados/`).
 
 ---
