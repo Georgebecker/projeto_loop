@@ -4,8 +4,8 @@
 **ciclos contínuos e verificáveis** — lê o objetivo, propõe UMA mudança pequena, testa,
 mede, decide (mantém ou reverte) e registra. Sem intervenção humana a cada passo.
 
-A base também é ponto de partida para projetos de dados: documentação, regras de ouro
-e configuração (`.env`).
+Este repositório **é o modelo em si** — o Loop Engineer completo (contrato, regras de ouro,
+ferramentas de verificação e agente), pronto para receber um sistema alvo e rodar ciclos.
 
 ---
 
