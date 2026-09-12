@@ -6,8 +6,12 @@
   (`.env.local`, `.env.prod` etc.). O unico arquivo `.env*` permitido e o
   `.env.example` (modelo sem segredos).
 
-Isso e a camada mais forte da regra "o `.env` nunca vai para o git": funciona
-mesmo se alguem usar `git add -f` ou `git add .` sem conferir.
+- `pre-push` — segunda barreira: antes de enviar ao repositorio remoto, confere
+  todos os commits que serao enviados e bloqueia o push se algum contiver
+  `.env` ou variantes. Protege mesmo se um commit passou com `--no-verify`.
+
+Juntas, elas formam a regra "o `.env` NUNCA vai para o git": funcionam mesmo
+se alguem usar `git add -f` ou `git add .` sem conferir, ou tentar burlar o commit.
 
 ## Como ativar (uma vez so)
 
@@ -29,10 +33,14 @@ git config core.hooksPath .githooks
 git config core.hooksPath
 ```
 
-Tem que responder `.githooks`. Tambem vale conferir que o arquivo
-`.githooks\pre-commit` existe.
+Tem que responder `.githooks`. Tambem vale conferir que os arquivos
+`.githooks\pre-commit` e `.githooks\pre-push` existem.
 
 ## Teste rapido (opcional)
 
 Crie um arquivo `.env` de mentira, tente `git add .env` + `git commit`:
 o commit tem que ser recusado com a mensagem "BLOQUEADO".
+
+Para testar o `pre-push` sem risco: crie um repositorio de teste em pasta
+temporaria, adicione um `.env`, faca o commit com `--no-verify` e tente
+`git push` para um remoto de mentira — o push tem que ser bloqueado.
