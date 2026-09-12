@@ -12,6 +12,7 @@ Ponto de partida com documentação, regras de ouro e configuração (`.env`).
 **Apoie o autor:**
 - **PIX:** `a8b68e14-edfe-4450-88f2-c2af4aca2a6c`
 - **Buy Me a Coffee:** <https://buymeacoffee.com/georgehbecker>
+- **LinkedIn:** <https://www.linkedin.com/in/georgehbecker/>
 
 ---
 
